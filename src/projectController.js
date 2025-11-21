@@ -1,8 +1,10 @@
 import createProject from "./project";
+import createTodo from "./todo";
 
 const projects = {};
 
 export function create(project_name) {
+  if (projects[project_name]) return projects[project_name];
   const project = createProject(project_name);
   projects[project_name] = project;
   return project;
@@ -14,6 +16,19 @@ export function deleteProject(project_name) {
 
 export function getProject(project_name) {
   return projects[project_name] || null;
+}
+
+export function addTodoToProject(project_name, todoData) {
+  const project = getProject(project_name);
+  if (!project) return null;
+  const todo = createTodo(
+    todoData.title,
+    todoData.desc,
+    todoData.date,
+    todoData.priority
+  );
+  project.todos.push(todo);
+  return todo;
 }
 
 export function displayProjects() {
