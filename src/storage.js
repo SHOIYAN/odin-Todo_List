@@ -2,8 +2,8 @@ import { displayProjects } from "./projectController";
 
 
 export function saveProjects() {
-    const putProjects = JSON.stringify(displayProjects());
-    localStorage.setItem("projects",putProjects);
+    const stringProjects = JSON.stringify(displayProjects());
+    localStorage.setItem("projects",stringProjects);
 
 }
 
