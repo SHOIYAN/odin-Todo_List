@@ -9,5 +9,5 @@ export function saveProjects() {
 
 export function loadProjects() {
     const projects = localStorage.getItem("projects");
-    return JSON.parse(projects);
+    return projects ? JSON.parse(projects) : null;
 }
