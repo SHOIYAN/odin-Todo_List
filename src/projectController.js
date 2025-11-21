@@ -34,3 +34,13 @@ export function addTodoToProject(project_name, todoData) {
 export function displayProjects() {
   return projects;
 }
+
+export function loadAll(jsonData) {
+  if (!jsonData) return;
+  for (const name in jsonData) {
+    const savedProject = jsonData[name];
+    const project = createProject(name);
+    project.todos = savedProject.todos || [];
+    projects[name] = project;
+  }
+}
