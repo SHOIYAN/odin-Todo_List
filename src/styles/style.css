@@ -1,0 +1,37 @@
+@import url(https://fonts.bunny.net/css?family=montserrat:700);
+@import url(https://fonts.bunny.net/css?family=inter:500);
+@import url(https://fonts.bunny.net/css?family=open-sans:400i);
+
+:root {
+  --bg-main: #f8f9fa; /* light background */
+  --bg-sidebar: #a4a5a7; /* muted gray sidebar tones */
+  --text-dark: #2e3133; /* dark text */
+  --text-medium: #5f6062; /* medium gray text */
+  --text-light: #b2bbc6; /* light gray text */
+  --accent-blue: #549eec; /* blue highlights (selected item) */
+  --accent-blue-light: #b5cade; /* lighter blue (subtle highlights) */
+  --accent-gray: #6a798d; /* subtle gray dividers */
+  --header-font: 'Montserrat', sans-serif;
+  --header-font2: 'Inter', sans-serif;
+  --text-font: 'Open Sans', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+header {
+  text-align: center;
+  padding-top: 0.5rem;
+  background-color: var(--bg-main);
+}
+header h1 {
+  font-family: var(--header-font);
+  margin-bottom: 1rem;
+}
+header p {
+  font-family: var(--text-font);
+}
+
+
