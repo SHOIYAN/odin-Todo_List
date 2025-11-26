@@ -1,58 +1,209 @@
+@import url(https://fonts.bunny.net/css?family=inter:400,500,600);
 @import url(https://fonts.bunny.net/css?family=montserrat:700);
-@import url(https://fonts.bunny.net/css?family=inter:500);
-@import url(https://fonts.bunny.net/css?family=open-sans:400i);
 
 :root {
-  --bg-main: #f8f9fa; /* light background */
-  --bg-sidebar: #a4a5a7; /* muted gray sidebar tones */
-  --text-dark: #2e3133; /* dark text */
-  --text-medium: #5f6062; /* medium gray text */
-  --text-light: #b2bbc6; /* light gray text */
-  --accent-blue: #549eec; /* blue highlights (selected item) */
-  --accent-blue-light: #b5cade; /* lighter blue (subtle highlights) */
-  --accent-gray: #6a798d; /* subtle gray dividers */
-  --header-font: 'Montserrat', sans-serif;
-  --header-font2: 'Inter', sans-serif;
-  --text-font: 'Open Sans', sans-serif;
+  --bg-main: #111418;          /* main content background */
+  --bg-sidebar: #171b21;       /* sidebar background */
+  --sidebar-border: #22272e;   /* subtle divider line */
+
+  --text-dark: #f0f2f5;        /* primary text */
+  --text-medium: #c7ccd2;      /* secondary text */
+  --text-light: #6e7681;       /* dim helper text */
+
+  --accent-blue: #4c8bf5;      /* same accent, works in dark */
+  --accent-blue-light: #243b66;/* subtle blue hover background */
+
+  --card-bg: #1c2026;          /* dark card background */
+  --card-border: #2a3038; 
+
+  --radius: 12px;              /* keep UI style consistent */
 }
 
+
+/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  background: var(--bg-main);
+  font-family: Inter, sans-serif;
+  min-height: 100%;
+}
+
+/* Header */
 header {
   text-align: center;
-  padding-top: 0.5rem;
-  background-color: var(--bg-main);
 }
 header h1 {
-  font-family: var(--header-font);
-  margin-bottom: 1rem;
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color: var(--text-dark);
+  margin-top: 0.5rem ;
+  margin-bottom: 0.17rem;
 }
 header p {
-  font-family: var(--text-font);
+  color: var(--text-medium);
+  font-size: 0.95rem;
 }
+
+/* Layout */
 .columns {
-  height: 100%;
-  width: 100%;
   display: grid;
-  grid-template-columns: 250px 1fr;
-}
-.leftContainer,.rightContainer {
-  padding: 1.5rem 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  align-items: center;
-}
-.leftContainer {
-  background-color: var(--bg-sidebar);
-  height: 100%;
-}
-.rightContainer {
-  background-color: var(--bg-main);
+  grid-template-columns: 260px 1fr;
   height: 100%;
 }
 
+/* Sidebar */
+.leftContainer {
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--sidebar-border);
+  padding: 2rem 1.5rem;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.addProject {
+  width: 100%;
+}
+
+.project {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius);
+  color: var(--text-medium);
+  font-size: 1rem;
+  transition: 0.15s ease;
+}
+
+.project:hover {
+  background: var(--accent-blue-light);
+  cursor: pointer;
+  color: var(--accent-blue);
+}
+
+.project.active {
+  background: var(--accent-blue-light);
+  color: var(--accent-blue);
+  font-weight: 600;
+}
+
+/* Right content */
+.rightContainer {
+  padding: 0.25rem 3rem 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Todo items */
+.todo-item {
+  display: flex;
+  width: 100%;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.todo-item:hover {
+  cursor: pointer;
+}
+.todo-item_details {
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-item h3 {
+  font-size: 1.15rem;
+  color: var(--text-dark);
+  margin-bottom: .4rem;
+}
+
+.todo-item p {
+  color: var(--text-medium);
+  font-size: 0.9rem;
+}
+.addTodo {
+  margin-top: -0.3rem;
+}
+
+/* Buttons */
+.button {
+  background: var(--accent-blue);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+.button:hover {
+  background: #3a73d8;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+/* checkmark */
+.todo-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+/* Hide real checkbox */
+.todo-check input {
+  display: none;
+}
+span:hover{
+  cursor: pointer;
+}
+
+/* Custom checkbox circle */
+.todo-check .checkmark {
+  height: 20px;
+  width: 20px;
+  border: 2px solid var(--text-light);
+  border-radius: 50%;
+  display: inline-block;
+  transition: 0.2s ease;
+  position: relative;
+}
+
+/* Filled circle when checked */
+.todo-done:checked + .checkmark {
+  background: var(--accent-blue);
+  border-color: var(--accent-blue);
+}
+
+/* Checkmark tick */
+.todo-done:checked + .checkmark::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 12px;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  left: 5px;
+  transform: rotate(45deg);
+}
+
+/* Completed state styling */
+.todo-item:has(.todo-done:checked ) .todo-item_details h3 {
+  text-decoration: line-through;
+  color: var(--text-light);
+}
+
+.todo-item:has(.todo-done:checked) .todo-item_details p {
+  color: var(--text-light);
+}
 

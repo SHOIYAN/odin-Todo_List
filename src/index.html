@@ -1,21 +1,27 @@
 <div class="mainContainer">
-  <header>
-    <h1>FocusFlow</h1>
-    <p>Focus on the 20% that moves the needle.</p>
-  </header>
-
   <div class="columns">
     <nav class="leftContainer">
-      <div class="addProject"><button>Add Project</button></div>
+      <div class="addProject"><button class="button">Add Project</button></div>
       <div class="project active">Today</div>
       <div class="project">Work</div>
       <div class="project">Hobbies</div>
     </nav>
     <main class="rightContainer">
-      <div class="addTodo"><button>Add Todo</button></div>
+      <header>
+        <h1>Focus Flow</h1>
+        <p>Focus on the 20% that moves the needle.</p>
+      </header>
+      <div class="addTodo"><button class="button">Add Todo</button></div>
+
       <div class="todo-item">
-        <h3 class="title">Prepare Presentation</h3>
-        <p class="priority-high">High Priority</p>
+        <label class="todo-check">
+          <input type="checkbox" class="todo-done" />
+          <span class="checkmark"></span>
+        </label>
+        <div class="todo-item_details">
+          <h3 class="title">Prepare Presentation</h3>
+          <p class="priority-high">High Priority</p>
+        </div>
       </div>
     </main>
   </div>
