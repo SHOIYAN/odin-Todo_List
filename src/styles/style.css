@@ -197,7 +197,7 @@ span:hover{
   transform: rotate(45deg);
 }
 
-/* Completed state styling */
+
 .todo-item:has(.todo-done:checked ) .todo-item_details h3 {
   text-decoration: line-through;
   color: var(--text-light);
@@ -206,4 +206,58 @@ span:hover{
 .todo-item:has(.todo-done:checked) .todo-item_details p {
   color: var(--text-light);
 }
+
+.todo-menu {
+  margin-left: auto;
+  position: relative;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  color: var(--text-medium);
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+}
+
+.menu-button:hover {
+  color: var(--text-dark);
+}
+
+.menu-dropdown {
+  position: absolute;
+  top: 28px;
+  right: 0;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 0.4rem 0;
+  width: 130px;
+  display: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 10;
+}
+
+.menu-item {
+  padding: 0.55rem 1rem;
+  color: var(--text-medium);
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+.menu-item:hover {
+  background: var(--accent-blue-light);
+  color: var(--accent-blue);
+}
+
+.menu-item.delete:hover {
+  background: #3a2b2b;
+  color: #ff6b6b;
+}
+
+.menu-button.active + .menu-dropdown {
+  display: block;
+}
+
 
