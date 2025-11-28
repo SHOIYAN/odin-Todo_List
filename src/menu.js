@@ -1,15 +1,17 @@
 export default function initTodoMenu() {
-  document.addEventListener("click", (e) => {
-    const isMenuButton = e.target.classList.contains("menu-button");
+  document.querySelectorAll(".menu-dropdown").forEach((menu) => {
+    menu.addEventListener("click", (e) => e.stopPropagation());
+  });
 
-    // Close all dropdowns first
+  document.addEventListener("click", (e) => {
+    const isMenuBtn = e.target.classList.contains("menu-button");
+
     document.querySelectorAll(".menu-button").forEach((btn) => {
       if (btn !== e.target) btn.classList.remove("active");
     });
 
-    if (isMenuButton) {
+    if (isMenuBtn) {
       e.target.classList.toggle("active");
-      e.stopPropagation();
     }
   });
 }
