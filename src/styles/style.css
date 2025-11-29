@@ -62,6 +62,7 @@ header p {
   background: var(--bg-sidebar);
   border-right: 1px solid var(--sidebar-border);
   padding: 2rem 1.5rem;
+  padding-top: 6.26rem;
   display: flex;
   height: 100%;
   flex-direction: column;
