@@ -18,6 +18,11 @@ export function getProject(project_name) {
   return projects[project_name] || null;
 }
 
+export function getTodos(project_name) {
+  const project = getProject(project_name);
+  return project.todos;
+}
+
 export function addTodoToProject(project_name, todoData) {
   const project = getProject(project_name);
   if (!project) return null;
