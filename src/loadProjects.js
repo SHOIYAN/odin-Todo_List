@@ -15,7 +15,7 @@ export function renderProjectList() {
 }
 
 export function renderTodoList(todos) {
-  
+  todoList.textContent = "";
   todos.forEach((todo) => {
     const todoItem = `<div class="todo-item">
             <label class="todo-check">
