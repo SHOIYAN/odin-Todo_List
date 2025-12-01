@@ -17,6 +17,7 @@
   --card-border: #2a3038; 
 
   --radius: 12px;              /* keep UI style consistent */
+  --delete-red: #ff6b6b;
 }
 
 
@@ -255,7 +256,7 @@ span:hover{
 
 .menu-item.delete:hover {
   background: #3a2b2b;
-  color: #ff6b6b;
+  color: var(--delete-red);
 }
 
 .menu-button.active + .menu-dropdown {
@@ -287,6 +288,15 @@ span:hover{
 }
 .projectInput:focus {
   border: 2px solid var(--accent-blue);
+}
+.projectButtons {
+  display: flex;
+}
+.delProjButt{
+  background-color: var(--delete-red);
+}
+.delProjButt:hover {
+  background-color: #ff3e3e;
 }
 
 
