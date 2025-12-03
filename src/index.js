@@ -3,7 +3,7 @@ import {create,loadAll,addTodoToProject} from "./projectController";
 import { loadProjects, saveProjects } from './storage';
 import initTodoMenu from './menu';
 import { renderProjectList,projectClickHandler } from './loadProjects';
-import { addProjectListener, todoModalHandler } from './buttonController';
+import { addProjectListener, todoModalHandler,refreshTodoList } from './buttonController';
 
 const savedProjects = loadProjects();
 loadAll(savedProjects);
@@ -12,3 +12,6 @@ initTodoMenu();
 projectClickHandler();
 addProjectListener();
 todoModalHandler();
+
+const firstProject = document.querySelector(".project");
+if (firstProject) refreshTodoList(firstProject.textContent);

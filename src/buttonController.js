@@ -1,5 +1,5 @@
 import { create, getTodos, deleteProject, addTodoToProject } from "./projectController";
-import { renderProjectList, renderTodoList } from "./loadProjects";
+import { renderProjectList, renderTodoList, setActiveProject } from "./loadProjects";
 import { saveProjects } from "./storage";
 
 const addBtn = document.querySelector(".addProject .button");
@@ -60,6 +60,7 @@ function addProject() {
     create(project);
     renderProjectList();
     saveProjects();
+    setActiveProject(project);
   }
 }
 
@@ -72,7 +73,7 @@ function delProject() {
   saveProjects();
 }
 
-function refreshTodoList(projectName) {
+export function refreshTodoList(projectName) {
   const todos = getTodos(projectName);
   renderTodoList(todos);
 }

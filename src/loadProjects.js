@@ -1,4 +1,5 @@
 import { displayProjects, getProject, getTodos } from "./projectController";
+import { refreshTodoList } from "./buttonController";
 
 const projectList = document.querySelector(".projectList");
 const todoList = document.querySelector(".todoList");
@@ -12,6 +13,10 @@ export function renderProjectList() {
     projectDiv.textContent = `${element}`;
     projectList.append(projectDiv);
   });
+  const firstProject = projectList.querySelector(".project");
+  if (firstProject) {
+    firstProject.classList.add("active");
+  }
 }
 
 export function renderTodoList(todos) {
@@ -47,9 +52,15 @@ export function projectClickHandler() {
     if (!projectDiv) return;
     const allProjects = document.querySelectorAll(".project");
     allProjects.forEach((p) => p.classList.remove("active"));
-    projectDiv.classList.add("active");
     const projectName = e.target.textContent;
-    const project = getProject(projectName);
-    renderTodoList(getTodos(project.project_name));
+    setActiveProject(projectName);
+    refreshTodoList(projectName);
+  });
+}
+
+export function setActiveProject(projectName) {
+  const projectEls = document.querySelectorAll(".project");
+  projectEls.forEach(el => {
+    el.classList.toggle("active", el.textContent === projectName);
   });
 }
