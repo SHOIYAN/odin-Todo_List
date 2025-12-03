@@ -295,8 +295,79 @@ span:hover{
 .delProjButt{
   background-color: var(--delete-red);
 }
-.delProjButt:hover {
+.delProjButt:hover, .cancelTodo:hover {
   background-color: #ff3e3e;
+}
+/* Todo Modal */
+.todoDialog {
+  border: none;
+  padding: 1.6rem;
+  background: var(--bg-main);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+  position: fixed;
+  width: 30%;
+  height: 40%;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.todoDialog::backdrop {
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+}
+
+.todoForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+option {
+  background-color: var(--bg-main);
+  color: var(--text-medium);
+}
+
+.todoDateInput::-webkit-calendar-picker-indicator{
+  cursor: pointer;
+}
+
+input[type="date"] {
+  color-scheme: dark;
+}
+
+.todoTitleInput,
+.todoPrioritySelect,
+.todoDateInput {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  outline: none;
+  font-size: 1rem;
+}
+
+.todoActions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+.todoActions > button {
+  width: 6rem;
+  height: 2.5rem;
+}
+.cancelTodo{
+  background-color: var(--delete-red);
+}
+
+.todoTitleInput:focus,
+.todoPrioritySelect:focus,
+.todoDateInput:focus {
+  border-color: var(--accent);
+  color: var(--text-medium);
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.3);
 }
 
 
