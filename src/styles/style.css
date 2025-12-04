@@ -292,6 +292,8 @@ span:hover{
   outline: none;
   font-size: 1rem;
 }
+.todoDescInput::placeholder,
+.todoTitleInput::placeholder,
 .projectInput::placeholder {
   color: var(--text-light);
 }
@@ -345,6 +347,11 @@ input[type="date"] {
   color-scheme: dark;
 }
 
+.todoDescInput {
+  resize: none;
+}
+
+.todoDescInput,
 .todoTitleInput,
 .todoPrioritySelect,
 .todoDateInput {
@@ -370,7 +377,7 @@ input[type="date"] {
 .cancelTodo{
   background-color: var(--delete-red);
 }
-
+.todoDescInput:focus,
 .todoTitleInput:focus,
 .todoPrioritySelect:focus,
 .todoDateInput:focus {
