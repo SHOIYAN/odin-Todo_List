@@ -61,6 +61,7 @@ function addProject() {
     renderProjectList();
     saveProjects();
     setActiveProject(project);
+    refreshTodoList(project);
   }
 }
 

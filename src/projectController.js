@@ -41,11 +41,24 @@ export function displayProjects() {
 }
 
 export function loadAll(jsonData) {
-  if (!jsonData) return;
-  for (const name in jsonData) {
-    const savedProject = jsonData[name];
-    const project = createProject(name);
-    project.todos = savedProject.todos || [];
-    projects[name] = project;
+  if (jsonData && Object.keys(jsonData).length > 0) {
+    for (const name in jsonData) {
+      const savedProject = jsonData[name];
+      const project = createProject(name);
+      project.todos = savedProject.todos || [];
+      projects[name] = project;
+    }
+    return;
   }
+
+  const defaultProject = create("Home");
+
+  defaultProject.todos.push(
+    createTodo("Buy groceries", "Milk, bread, eggs", "No date", "Low"),
+    createTodo("Finish portfolio", "Work on homepage", "No date", "High"),
+    createTodo("Workout", "Leg day", "No date", "Medium")
+  );
+
+  projects["Home"] = defaultProject;
 }
+
