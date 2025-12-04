@@ -112,7 +112,7 @@ header p {
   padding: 1.25rem 1.5rem;
   border-radius: var(--radius);
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 .todo-item:hover {
   cursor: pointer;
@@ -120,6 +120,15 @@ header p {
 .todo-item_details {
   display: flex;
   flex-direction: column;
+  gap: .5rem;
+}
+.todo-item_details .date {
+  font-size: 1rem;
+  color: var(--text-medium);
+}
+.todo-item_details .priority {
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .todo-item h3 {
