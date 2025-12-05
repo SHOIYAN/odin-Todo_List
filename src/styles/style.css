@@ -106,6 +106,7 @@ header p {
 /* Todo items */
 .todo-item {
   display: flex;
+  flex-direction: column;
   width: 100%;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -114,6 +115,25 @@ header p {
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   margin-bottom: 1rem;
 }
+.topSection{
+  display: flex;
+  width: 100%;
+}
+.bottomSection {
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 240ms ease, opacity 180ms ease;
+  opacity: 0;
+  padding-left: 1.8rem;
+  border-top: 1px solid var(--card-border);
+}
+.todo-item.expanded .bottomSection {
+  max-height: 400px;
+  opacity: 1;
+  padding-top: 1rem;
+}
+
 .todo-item:hover {
   cursor: pointer;
 }
@@ -145,6 +165,25 @@ header p {
   margin-top: -0.3rem;
 }
 
+.todo-extra {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.todo-notes {
+  color: var(--text-medium);
+  font-size: 0.95rem;
+  line-height: 1.4rem;
+  white-space: pre-wrap;
+}
+
+.todo-item.expanded .todo-extra {
+  display: flex;
+}
+
+
 /* Buttons */
 .button {
   background: var(--accent-blue);
@@ -170,6 +209,9 @@ header p {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
+}
+.todo-check {
+  margin-right: 0.5rem;
 }
 
 /* Hide real checkbox */

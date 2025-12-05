@@ -23,13 +23,14 @@ export function renderTodoList(todos) {
   todoList.textContent = "";
   todos.forEach((todo) => {
     const todoItem = `<div class="todo-item">
+          <div class="topSection">
             <label class="todo-check">
               <input type="checkbox" class="todo-done" />
               <span class="checkmark"></span>
             </label>
             <div class="todo-item_details">
               <h3 class="title">${todo.title}</h3>
-              <p class="date"> Due: ${todo.date}</p>
+              <p class="date">Due: ${todo.date}</p>
               <p class="priority">${todo.priority} Priority</p>
             </div>
             <div class="todo-menu">
@@ -39,7 +40,13 @@ export function renderTodoList(todos) {
                 <div class="menu-item delete">Delete</div>
               </div>
             </div>
-          </div>`;
+          </div>
+          <div class="bottomSection">
+            <div class="todo-extra">
+              <p class="todo-notes">${todo.desc}</p>
+            </div>
+          </div>
+        </div>`;
     const parser = new DOMParser();
     const doc = parser.parseFromString(todoItem, "text/html");
     const item = doc.body.firstChild;

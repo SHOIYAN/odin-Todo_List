@@ -11,6 +11,7 @@ const todoDialog = document.querySelector("#todoModal");
 const todoInput = document.querySelectorAll(".todoInput");
 const todoTitle = document.querySelector(".todoTitleInput");
 const todoPriority = document.querySelector(".todoPrioritySelect");
+const todoDesc = document.querySelector(".todoDescInput");
 const todoDate = document.querySelector(".todoDateInput");
 const cancelTodo = document.querySelector(".cancelTodo");
 
@@ -26,7 +27,7 @@ function checkReturnvalue() {
     const formattedDate = date ? date.toDateString() : "No date";
     const todoData = {
       title: todoTitle.value.trim(),
-      desc: todoTitle.value.trim(),
+      desc: todoDesc.value.trim(),
       date: formattedDate,
       priority: todoPriority.value,
     };
@@ -77,5 +78,20 @@ function delProject() {
 export function refreshTodoList(projectName) {
   const todos = getTodos(projectName);
   renderTodoList(todos);
+}
+
+export function todoListHandler(){
+  document.addEventListener("click", (e) => {
+  const item = e.target.closest(".todo-item");
+
+  if (!item) return;
+
+  if (e.target.closest(".todo-check")) return;
+
+  if (e.target.closest(".menu-button") || e.target.closest(".menu-dropdown")) return;
+
+  item.classList.toggle("expanded");
+});
+
 }
 
