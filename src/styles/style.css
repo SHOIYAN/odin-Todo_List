@@ -151,6 +151,28 @@ header p {
   font-weight: 600;
 }
 
+.priority::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+
+.priority.low::before {
+  background: #4c8bf5; 
+}
+
+.priority.medium::before {
+  background: #f5c84c; 
+}
+
+.priority.high::before {
+  background: #ff6b6b;
+}
+
 .todo-item h3 {
   font-size: 1.15rem;
   color: var(--text-dark);

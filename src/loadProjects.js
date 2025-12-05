@@ -31,7 +31,7 @@ export function renderTodoList(todos) {
             <div class="todo-item_details">
               <h3 class="title">${todo.title}</h3>
               <p class="date">Due: ${todo.date}</p>
-              <p class="priority">${todo.priority} Priority</p>
+              <p class="priority ${todo.priority.toLowerCase()}">${todo.priority} Priority</p>
             </div>
             <div class="todo-menu">
               <button class="menu-button">⋮</button>
