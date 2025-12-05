@@ -1,5 +1,5 @@
 import { displayProjects, getProject, getTodos } from "./projectController";
-import { refreshTodoList } from "./buttonController";
+import { attachTodoEvents, refreshTodoList } from "./buttonController";
 
 const projectList = document.querySelector(".projectList");
 const todoList = document.querySelector(".todoList");
@@ -22,7 +22,7 @@ export function renderProjectList() {
 export function renderTodoList(todos) {
   todoList.textContent = "";
   todos.forEach((todo) => {
-    const todoItem = `<div class="todo-item">
+    const todoItem = `<div class="todo-item" data-id=${todo.id}>
           <div class="topSection">
             <label class="todo-check">
               <input type="checkbox" class="todo-done" />
@@ -36,20 +36,21 @@ export function renderTodoList(todos) {
             <div class="todo-menu">
               <button class="menu-button">⋮</button>
               <div class="menu-dropdown">
-                <div class="menu-item">Edit</div>
+                <div class="menu-item edit">Edit</div>
                 <div class="menu-item delete">Delete</div>
               </div>
             </div>
           </div>
           <div class="bottomSection">
             <div class="todo-extra">
-              <p class="todo-notes">${todo.desc}</p>
+              <p class="todo-notes">${todo.desc ? todo.desc : 'No notes found'}</p>
             </div>
           </div>
         </div>`;
     const parser = new DOMParser();
     const doc = parser.parseFromString(todoItem, "text/html");
     const item = doc.body.firstChild;
+    attachTodoEvents(item,todo);
     todoList.appendChild(item);
   });
 }

@@ -3,7 +3,7 @@ import {create,loadAll,addTodoToProject} from "./projectController";
 import { loadProjects, saveProjects } from './storage';
 import initTodoMenu from './menu';
 import { renderProjectList,projectClickHandler } from './loadProjects';
-import { addProjectListener, todoModalHandler,todoListHandler } from './buttonController';
+import { addProjectListener, todoModalHandler, todoListHandler, refreshTodoList } from './buttonController';
 
 const savedProjects = loadProjects();
 loadAll(savedProjects);

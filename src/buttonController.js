@@ -1,5 +1,16 @@
-import { create, getTodos, deleteProject, addTodoToProject } from "./projectController";
-import { renderProjectList, renderTodoList, setActiveProject } from "./loadProjects";
+import {
+  create,
+  getTodos,
+  deleteProject,
+  addTodoToProject,
+  updateTodo,
+  deleteTodo,
+} from "./projectController";
+import {
+  renderProjectList,
+  renderTodoList,
+  setActiveProject,
+} from "./loadProjects";
 import { saveProjects } from "./storage";
 
 const addBtn = document.querySelector(".addProject .button");
@@ -32,7 +43,14 @@ function checkReturnvalue() {
       priority: todoPriority.value,
     };
     const project = document.querySelector(".active").textContent;
-    addTodoToProject(project, todoData);
+
+    if (todoDialog.dataset.editing) {
+      updateTodo(todoDialog.dataset.editing, project, todoData);
+    } else {
+      addTodoToProject(project, todoData);
+    }
+
+    delete todoDialog.dataset.editing;
     saveProjects();
     refreshTodoList(project);
   }
@@ -94,4 +112,26 @@ export function todoListHandler(){
 });
 
 }
+
+export function attachTodoEvents(todoElement, todo) {
+  const editBtn = todoElement.querySelector(".menu-item.edit");
+  const deleteBtn = todoElement.querySelector(".menu-item.delete");
+
+  if (!editBtn || !deleteBtn) return;
+
+  editBtn.addEventListener("click", () => openEditTodoModal(todo));
+  deleteBtn.addEventListener("click", () => deleteTodo(todo.id));
+}
+
+function openEditTodoModal(todo) {
+  todoDialog.dataset.editing = todo.id;
+
+  todoTitle.value = todo.title;
+  todoPriority.value = todo.priority;
+  todoDate.value = todo.date !== "No date" ? todo.date : "";
+  document.querySelector(".todoDescInput").value = todo.desc || "";
+
+  todoDialog.showModal();
+}
+
 
