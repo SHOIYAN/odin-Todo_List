@@ -98,19 +98,19 @@ export function refreshTodoList(projectName) {
   renderTodoList(todos);
 }
 
-export function todoListHandler(){
+export function todoListHandler() {
   document.addEventListener("click", (e) => {
-  const item = e.target.closest(".todo-item");
+    const item = e.target.closest(".todo-item");
 
-  if (!item) return;
+    if (!item) return;
 
-  if (e.target.closest(".todo-check")) return;
+    if (e.target.closest(".todo-check")) return;
 
-  if (e.target.closest(".menu-button") || e.target.closest(".menu-dropdown")) return;
+    if (e.target.closest(".menu-button") || e.target.closest(".menu-dropdown"))
+      return;
 
-  item.classList.toggle("expanded");
-});
-
+    item.classList.toggle("expanded");
+  });
 }
 
 export function attachTodoEvents(todoElement, todo) {
@@ -121,6 +121,13 @@ export function attachTodoEvents(todoElement, todo) {
 
   editBtn.addEventListener("click", () => openEditTodoModal(todo));
   deleteBtn.addEventListener("click", () => deleteTodo(todo.id));
+
+  const checkbox = todoElement.querySelector(".todo-done");
+
+  checkbox.addEventListener("change", () => {
+    todo.completed = checkbox.checked;
+    saveProjects();
+  });
 }
 
 function openEditTodoModal(todo) {
@@ -133,5 +140,3 @@ function openEditTodoModal(todo) {
 
   todoDialog.showModal();
 }
-
-

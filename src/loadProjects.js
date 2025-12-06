@@ -25,7 +25,7 @@ export function renderTodoList(todos) {
     const todoItem = `<div class="todo-item" data-id=${todo.id}>
           <div class="topSection">
             <label class="todo-check">
-              <input type="checkbox" class="todo-done" />
+              <input type="checkbox" class="todo-done" ${todo.completed ? "checked" : ""} />
               <span class="checkmark"></span>
             </label>
             <div class="todo-item_details">
