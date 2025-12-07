@@ -10,7 +10,7 @@ import {
   renderProjectList,
   renderTodoList,
   setActiveProject,
-} from "./loadProjects";
+} from "../dom/loadProjects";
 import { saveProjects } from "./storage";
 
 const addBtn = document.querySelector(".addProject .button");

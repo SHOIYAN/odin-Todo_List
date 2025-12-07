@@ -1,5 +1,5 @@
-import createProject from "./project";
-import createTodo from "./todo";
+import createProject from "../components/project";
+import createTodo from "../components/todo";
 import { saveProjects } from "./storage";
 import { refreshTodoList } from "./buttonController";
 

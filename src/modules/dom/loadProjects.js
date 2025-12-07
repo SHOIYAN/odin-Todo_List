@@ -1,5 +1,5 @@
-import { displayProjects, getProject, getTodos } from "./projectController";
-import { attachTodoEvents, refreshTodoList } from "./buttonController";
+import { displayProjects } from "../controllers/projectController";
+import { attachTodoEvents, refreshTodoList } from "../controllers/buttonController";
 
 const projectList = document.querySelector(".projectList");
 const todoList = document.querySelector(".todoList");
