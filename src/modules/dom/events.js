@@ -1,25 +1,26 @@
+import { create, deleteProject, addTodoToProject } from "../controllers/projectController";
+
 import {
-  create,
-  getTodos,
-  deleteProject,
-  addTodoToProject,
   updateTodo,
   deleteTodo,
-} from "./projectController";
+} from "../controllers/todoController";
+
+import { renderProjectList, refreshTodoList } from "./render";
+import { setActiveProject } from "../controllers/uiController"
+import { saveProjects } from "../controllers/storage";
+
 import {
-  renderProjectList,
-  renderTodoList,
-  setActiveProject,
-} from "../dom/loadProjects";
-import { saveProjects } from "./storage";
+  showModal,
+  closeModal,
+} from "../controllers/uiController";
 
 const addBtn = document.querySelector(".addProject .button");
 const delBtn = document.querySelector(".deleteProject .button");
 const todoList = document.querySelector(".todoList");
 const projectInput = document.querySelector(".projectInput");
+const projectList = document.querySelector(".projectList");
 const addTodoBtn = document.querySelector(".addTodo button");
 const todoDialog = document.querySelector("#todoModal");
-const todoInput = document.querySelectorAll(".todoInput");
 const todoTitle = document.querySelector(".todoTitleInput");
 const todoPriority = document.querySelector(".todoPrioritySelect");
 const todoDesc = document.querySelector(".todoDescInput");
@@ -56,17 +57,6 @@ function checkReturnvalue() {
   }
 }
 
-function showModal() {
-  for (const input of todoInput) {
-    input.value = "";
-  }
-  todoDialog.showModal();
-}
-
-function closeModal() {
-  todoDialog.close();
-}
-
 export function addProjectListener() {
   addBtn.addEventListener("click", addProject);
   delBtn.addEventListener("click", delProject);
@@ -91,11 +81,6 @@ function delProject() {
   todoList.textContent = "";
   renderProjectList();
   saveProjects();
-}
-
-export function refreshTodoList(projectName) {
-  const todos = getTodos(projectName);
-  renderTodoList(todos);
 }
 
 export function todoListHandler() {
@@ -130,13 +115,32 @@ export function attachTodoEvents(todoElement, todo) {
   });
 }
 
-function openEditTodoModal(todo) {
-  todoDialog.dataset.editing = todo.id;
+export default function initTodoMenu() {
+  document.querySelectorAll(".menu-dropdown").forEach((menu) => {
+    menu.addEventListener("click", (e) => e.stopPropagation());
+  });
 
-  todoTitle.value = todo.title;
-  todoPriority.value = todo.priority;
-  todoDate.value = todo.date !== "No date" ? todo.date : "";
-  document.querySelector(".todoDescInput").value = todo.desc || "";
+  document.addEventListener("click", (e) => {
+    const isMenuBtn = e.target.classList.contains("menu-button");
 
-  todoDialog.showModal();
+    document.querySelectorAll(".menu-button").forEach((btn) => {
+      if (btn !== e.target) btn.classList.remove("active");
+    });
+
+    if (isMenuBtn) {
+      e.target.classList.toggle("active");
+    }
+  });
+}
+
+export function projectClickHandler() {
+  projectList.addEventListener("click", (e) => {
+    const projectDiv = e.target.closest(".project");
+    if (!projectDiv) return;
+    const allProjects = document.querySelectorAll(".project");
+    allProjects.forEach((p) => p.classList.remove("active"));
+    const projectName = e.target.textContent;
+    setActiveProject(projectName);
+    refreshTodoList(projectName);
+  });
 }

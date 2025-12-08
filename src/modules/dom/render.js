@@ -1,8 +1,14 @@
 import { displayProjects } from "../controllers/projectController";
-import { attachTodoEvents, refreshTodoList } from "../controllers/buttonController";
+import { attachTodoEvents } from "./events";
+import {getTodos} from "../controllers/todoController"
 
 const projectList = document.querySelector(".projectList");
 const todoList = document.querySelector(".todoList");
+
+export function refreshTodoList(projectName) {
+  const todos = getTodos(projectName);
+  renderTodoList(todos);
+}
 
 export function renderProjectList() {
   projectList.textContent = "";
@@ -55,21 +61,4 @@ export function renderTodoList(todos) {
   });
 }
 
-export function projectClickHandler() {
-  projectList.addEventListener("click", (e) => {
-    const projectDiv = e.target.closest(".project");
-    if (!projectDiv) return;
-    const allProjects = document.querySelectorAll(".project");
-    allProjects.forEach((p) => p.classList.remove("active"));
-    const projectName = e.target.textContent;
-    setActiveProject(projectName);
-    refreshTodoList(projectName);
-  });
-}
 
-export function setActiveProject(projectName) {
-  const projectEls = document.querySelectorAll(".project");
-  projectEls.forEach(el => {
-    el.classList.toggle("active", el.textContent === projectName);
-  });
-}

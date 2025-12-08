@@ -1,12 +1,15 @@
-import './styles/style.css';
-import {create,loadAll,addTodoToProject} from "./projectController";
-import { loadProjects, saveProjects } from './storage';
-import initTodoMenu from './menu';
-import { renderProjectList,projectClickHandler } from './loadProjects';
-import { addProjectListener, todoModalHandler, todoListHandler, refreshTodoList } from './buttonController';
+import "./styles/style.css";
+import { loadAll,loadProjects } from "./modules/controllers/storage";
+import {
+  projectClickHandler,
+  addProjectListener,
+  todoModalHandler,
+  todoListHandler,
+} from "./modules/dom/events";
+import initTodoMenu from "./modules/dom/events";
+import { renderProjectList } from "./modules/dom/render";
 
-const savedProjects = loadProjects();
-loadAll(savedProjects);
+
 renderProjectList();
 initTodoMenu();
 projectClickHandler();
