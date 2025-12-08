@@ -1,5 +1,5 @@
 import "./styles/style.css";
-import { loadAll,loadProjects } from "./modules/controllers/storage";
+import { loadProjects } from "./modules/controllers/storage";
 import {
   projectClickHandler,
   addProjectListener,
@@ -7,9 +7,11 @@ import {
   todoListHandler,
 } from "./modules/dom/events";
 import initTodoMenu from "./modules/dom/events";
+import { loadAll } from "./modules/controllers/projectController";
 import { renderProjectList } from "./modules/dom/render";
 
-
+const savedProjects = loadProjects();
+loadAll(savedProjects);
 renderProjectList();
 initTodoMenu();
 projectClickHandler();
