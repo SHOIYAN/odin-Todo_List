@@ -19,15 +19,15 @@ export function getProject(project_name) {
 }
 
 export function addTodoToProject(project_name, todoData) {
-  const projectName = getProject(project_name);
-  if (!projectName) return null;
+  const project = getProject(project_name);
+  if (!project) return null;
   const todo = createTodo(
     todoData.title,
     todoData.desc,
     todoData.date,
     todoData.priority
   );
-  projects[projectName].todos.push(todo);
+  project.todos.push(todo);
   return todo;
 }
 
