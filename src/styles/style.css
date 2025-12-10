@@ -382,7 +382,7 @@ span:hover{
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
   position: fixed;
   width: 30%;
-  height: 40%;
+  height: 60%;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
