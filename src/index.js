@@ -8,7 +8,7 @@ import {
 } from "./modules/dom/events";
 import initTodoMenu from "./modules/dom/events";
 import { loadAll } from "./modules/controllers/projectController";
-import { renderProjectList } from "./modules/dom/render";
+import { renderProjectList, refreshTodoList } from "./modules/dom/render";
 
 const savedProjects = loadProjects();
 loadAll(savedProjects);

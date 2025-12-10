@@ -12,6 +12,7 @@ import { saveProjects } from "../controllers/storage";
 import {
   showModal,
   closeModal,
+  openEditTodoModal
 } from "../controllers/uiController";
 
 const addBtn = document.querySelector(".addProject .button");
