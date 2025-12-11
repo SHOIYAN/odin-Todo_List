@@ -43,12 +43,13 @@ header h1 {
   font-weight: 700;
   font-size: 2rem;
   color: var(--text-dark);
-  margin-top: 0.5rem ;
+  margin-top: 0.2rem ;
   margin-bottom: 0.17rem;
 }
 header p {
   color: var(--text-medium);
   font-size: 0.95rem;
+  margin-top: 0.5rem;
 }
 
 /* Layout */
